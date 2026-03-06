@@ -38,6 +38,7 @@
   </style>
 </head>
 <body>
+
   <!-- Temporizador -->
   <div id="timer">0</div>
 
@@ -49,10 +50,39 @@
   <!-- Script JavaScript embutido na página -->
   <script>
 
+    let tempo = 0;
+    let intervalo = null;
 
-    // 1ª Digitação (Resolva aqui o exercício)
+    const timer = document.getElementById("timer");
+    const startButton = document.getElementById("startButton");
+    const pauseButton = document.getElementById("pauseButton");
+    const resetButton = document.getElementById("resetButton");
 
+    // Iniciar temporizador
+    startButton.addEventListener("click", function() {
+      if (intervalo === null) {
+        intervalo = setInterval(function() {
+          tempo++;
+          timer.textContent = tempo;
+        }, 1000);
+      }
+    });
+
+    // Pausar temporizador
+    pauseButton.addEventListener("click", function() {
+      clearInterval(intervalo);
+      intervalo = null;
+    });
+
+    // Resetar temporizador
+    resetButton.addEventListener("click", function() {
+      clearInterval(intervalo);
+      intervalo = null;
+      tempo = 0;
+      timer.textContent = tempo;
+    });
 
   </script>
+
 </body>
 </html>
